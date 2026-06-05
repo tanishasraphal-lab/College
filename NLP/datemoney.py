@@ -1,3 +1,4 @@
+# This code extracts date and money expressions from a given text using regular expressions.
 import re
 text = "John paid $500 on 12/05/2026 and another ₹2000 on 15-06-2026."
 #Date Pattern

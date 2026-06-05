@@ -1,3 +1,4 @@
+#This code defines a simple context-free grammar (CFG) and generates sentence based in that grammar using nltk
 import nltk
 from nltk import CFG
 from nltk.parse.generate import generate

@@ -1,3 +1,4 @@
+# Named Entity Recognition using NLTK
 import nltk
 #Sample text
 text = "Barack Obama was born in Hawaii and served as president of the United States."
