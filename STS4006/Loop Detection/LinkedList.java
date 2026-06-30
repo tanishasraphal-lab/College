@@ -29,7 +29,7 @@ public class LinkedList {
         return false;
     }
     //Print result
-    void printLoot(){
+    void printLoop(){
         if(detectLoop()) System.out.println("Loop found");
         else System.out.println("Loop not found");
     }
@@ -68,7 +68,7 @@ public class LinkedList {
                 System.out.println("Invalid position, no loop created");
             }
         }
-        list.printLoot();
+        list.printLoop();
         sc.close();
     }
 }

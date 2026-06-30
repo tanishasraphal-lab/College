@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #333;
+            width: 400px;
+            background-color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Online Shopping System</h2>
+
+    <button onclick="orderProcess('Smartphone')">
+        Place Order
+    </button>
+
+    <div id="output"></div>
+
+    <script>
+        const outputDiv = document.getElementById("output");
+
+        // Arrow Function
+        const showMessage = (message) => {
+            outputDiv.innerHTML += message + "<br>";
+        };
+
+        // Callback Function
+        function placeOrder(product, callback) {
+            showMessage(`Order placed for: ${product}`);
+            callback(product);
+        }
+
+        // Promise Function
+        function processPayment() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Payment Successful");
+                }, 2000);
+            });
+        }
+
+        // Async/Await Function
+        async function orderProcess(product) {
+            outputDiv.innerHTML = "";
+
+            showMessage("Starting order process...");
+
+            placeOrder(product, (item) => {
+                showMessage(`Order confirmed for: ${item}`);
+            });
+
+            const paymentStatus = await processPayment();
+
+            showMessage(paymentStatus);
+            showMessage("Order will be delivered soon.");
+        }
+    </script>
+
+</body>
+</html>
