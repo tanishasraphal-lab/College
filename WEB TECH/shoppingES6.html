@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Online Shopping Demo</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+margin-top:50px;
+background:#f2f2f2;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+color:green;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Online Shopping Order Process</h2>
+
+<button onclick="placeOrder()">Place Order</button>
+
+<div id="result"></div>
+
+<script>
+
+// Arrow Function
+const display=(message)=>{
+document.getElementById("result").innerHTML+=message+"<br>";
+};
+
+// Callback Function
+function order(callback){
+
+display("Order Placed");
+
+callback();
+
+}
+
+// Async Function
+async function payment(){
+
+await new Promise(resolve=>setTimeout(resolve,2000));
+
+display("Payment Successful");
+
+display("Order Confirmed");
+
+}
+
+// Main Function
+function placeOrder(){
+
+document.getElementById("result").innerHTML="";
+
+order(()=>{
+payment();
+});
+
+}
+
+</script>
+
+</body>
+</html>

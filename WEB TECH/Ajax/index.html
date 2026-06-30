@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX JSON Example</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:18px;
+        }
+
+        #output{
+            margin-top:20px;
+            font-size:20px;
+            color:blue;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h2>Student Information</h2>
+
+<button onclick="loadData()">Load Data</button>
+
+<div id="output"></div>
+
+<script>
+
+function loadData(){
+
+var xhr=new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+
+if(this.readyState==4 && this.status==200){
+
+var student=JSON.parse(this.responseText);
+
+document.getElementById("output").innerHTML=
+"<h3>Student Details</h3>"+
+"Name : "+student.name+"<br>"+
+"Age : "+student.age+"<br>"+
+"Course : "+student.course;
+
+}
+
+};
+
+xhr.open("GET","student.json",true);
+
+xhr.send();
+
+}
+
+</script>
+
+</body>
+</html>
