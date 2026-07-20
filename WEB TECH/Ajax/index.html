@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AJAX JSON Example</title>
-
-    <style>
-        body{
-            font-family:Arial;
-            text-align:center;
-            margin-top:50px;
-        }
-
-        button{
-            padding:10px 20px;
-            font-size:18px;
-        }
-
-        #output{
-            margin-top:20px;
-            font-size:20px;
-            color:blue;
-        }
-    </style>
-
+    <title>AJAX JSON</title>
 </head>
 
 <body>
 
-<h2>Student Information</h2>
+<h2>Student Data</h2>
 
-<button onclick="loadData()">Load Data</button>
+<button type="button" onclick="loadData()">
+    Load Data
+</button>
 
-<div id="output"></div>
+<div id="result"></div>
 
 <script>
 
-function loadData(){
+function loadData() {
 
-var xhr=new XMLHttpRequest();
+    document.getElementById("result").innerHTML = "Loading...";
 
-xhr.onreadystatechange=function(){
+    var xhr = new XMLHttpRequest();
 
-if(this.readyState==4 && this.status==200){
+    xhr.open("GET", "./student.json", true);
 
-var student=JSON.parse(this.responseText);
+    xhr.onload = function () {
 
-document.getElementById("output").innerHTML=
-"<h3>Student Details</h3>"+
-"Name : "+student.name+"<br>"+
-"Age : "+student.age+"<br>"+
-"Course : "+student.course;
+        if (xhr.status === 200) {
 
-}
+            var data = JSON.parse(xhr.responseText);
 
-};
+            var output = "";
 
-xhr.open("GET","student.json",true);
+            for (var i = 0; i < data.length; i++) {
 
-xhr.send();
+                output += "<h3>Student " + (i + 1) + "</h3>";
 
+                output += "Name: " + data[i].name + "<br>";
+
+                output += "Age: " + data[i].age + "<br>";
+
+                output += "CGPA: " + data[i].cgpa + "<br>";
+            }
+
+            document.getElementById("result").innerHTML = output;
+
+        } else {
+
+            document.getElementById("result").innerHTML =
+            "Error: JSON file not found. Status = " + xhr.status;
+        }
+    };
+
+    xhr.onerror = function () {
+
+        document.getElementById("result").innerHTML =
+        "AJAX Error. Run using Live Server.";
+    };
+
+    xhr.send();
 }
 
 </script>

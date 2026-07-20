@@ -1,5 +1,19 @@
-{
-    "name": "Bob",
-    "age": 22,
-    "course": "BCA"
-}
+[
+    {
+        "name": "Alice",
+        "age": 20,
+        "cgpa": 8.5
+    },
+
+    {
+        "name": "Bob",
+        "age": 21,
+        "cgpa": 7.8
+    },
+
+    {
+        "name": "Charlie",
+        "age": 19,
+        "cgpa": 9.0
+    }
+]
